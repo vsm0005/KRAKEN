@@ -436,7 +436,7 @@ function Join() {
       </div>
     </section>
   );
-}
+} 
 
 function Footer() {
   return (
