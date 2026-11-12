@@ -473,9 +473,6 @@ function Join() {
             </select>
           </div>
           <button className="btn btn-primary" type="button" onClick={submit}>Join the pilot list</button>
-          {done && <div className="success" role="status">You're on the pilot list. We'll write to you when CoolPlay testing opens.</div>}
-          <p className="form-note">We'll only use your email to tell you about the CoolPlay pilot.</p>
-        </div>
       </div>
     </section>
   );
