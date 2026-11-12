@@ -1,17 +1,17 @@
-# CoolPlay
+# Kraken
 
-**Stay Cool. Play Longer.**
+**Beyond Reality. Beyond Limits.**
 
-A concept website for CoolPlay, an affordable laptop cooling pad for gaming laptops. Built with React and Vite.
+A concept website for Kraken, an affordable cooling pad for gaming laptops. Built with React and Vite.
 
-> CoolPlay is a preliminary concept. Product specifications, pricing, market demand, and performance claims all require validation. Nothing on the site is for sale.
+> The Kraken cooling pad is a preliminary concept. Product specifications, pricing, market demand, and performance claims all require validation. Nothing on the site is for sale.
 
 ## What's on the site
 
 - An interactive airflow illustration (fan speed and angle controls)
-- The problem, the five product features, and the Entry and Premium models
+- The Kraken brand band, the problem, the five product features, and the Entry and Premium models
 - A testing roadmap and a list of claims that are not yet earned
-- Target audience, FAQ, and a pilot-list sign-up form
+- Target audience, FAQ, and a button that opens a Google Form to collect opinions
 
 ## Run it locally
 
@@ -35,14 +35,15 @@ npm run preview
 2. In the repository, open **Settings > Pages** and set **Source** to **GitHub Actions**.
 3. Push to `main`. The workflow in `.github/workflows/deploy.yml` builds and publishes the site.
 
-## Sign-up form
+## Feedback form
 
-The pilot-list form validates the email address but does not send or store anything. To collect sign-ups, connect the `submit` function in the `Join` component (`src/App.jsx`) to a backend or a form service.
+The "Share your opinion" button in the `Join` component (`src/App.jsx`) opens a Google Form. To use a different form, change the `FORM_LINK` value there.
 
 ## Project structure
 
 ```
-src/App.jsx      Page sections and content
-src/styles.css   All styles, with light and dark themes
-src/main.jsx     React entry point
+src/App.jsx          Page sections and content
+src/styles.css       All styles
+src/main.jsx         React entry point
+public/              Logo (kraken-logo.png) and favicon
 ```

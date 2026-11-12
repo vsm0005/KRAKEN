@@ -36,7 +36,7 @@ const MODEL_ROWS = [
 const PHASES = [
   ["Customer discovery", "We interview 15 to 25 gaming laptop owners about heat, noise, comfort, and what they've already tried. We avoid leading questions."],
   ["Competitor and price research", "We compare existing pads on price, fan layout, noise, adjustability, warranty, reviews, and return policies, and study the most common complaints."],
-  ["Prototype validation", "The same laptop, with and without CoolPlay, under the same conditions. We repeat the tests and record room temperature, power settings, workload, and test length."],
+  ["Prototype validation", "The same laptop, with and without the Kraken pad, under the same conditions. We repeat the tests and record room temperature, power settings, workload, and test length."],
   ["Small pilot launch", "A limited batch, only after safety, quality, and performance testing. We collect returns, complaints, and ratings before making more."],
 ];
 
@@ -47,32 +47,22 @@ const FAQS = [
   ["Will it fit my laptop?", "We'll publish dimensions, supported laptop sizes, and notes on airflow layout with the pilot, so you can check before you buy."],
   ["How loud will it be?", "The three fan speeds let you trade airflow for noise. We'll measure noise at each setting and report it on the product page."],
   ["How much will it cost?", "Our planning range is ₹1,499 to ₹2,499. It's an assumption, and we'll finalize it after cost analysis and price testing with customers."],
-  ["When can I buy one?", "CoolPlay is a concept. A limited pilot batch comes only after safety, quality, and performance testing. Join the list below to hear when it opens."],
+  ["When can I buy one?", "The Kraken cooling pad is a concept. A limited pilot batch comes only after safety, quality, and performance testing. Join the list below to hear when it opens."],
   ["Do creators get paid to review it?", "We plan to work with small creators whose audiences match our customers. Any paid partnership will be disclosed."],
 ];
 
 /* ------------------------------------------------------------------ */
 /*  Small pieces                                                       */
 /* ------------------------------------------------------------------ */
-function Logo() {
-  return (
-    <svg viewBox="0 0 32 32" aria-hidden="true">
-      <circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" strokeWidth="2" />
-      <g fill="var(--cool)">
-        <path d="M16 16 C16 8, 22 6, 24 9 C25 12, 20 16, 16 16Z" />
-        <path d="M16 16 C22 16, 26 21, 23.5 24 C20.5 25.5, 16 20.5, 16 16Z" />
-        <path d="M16 16 C12 20, 6 20, 6 16.5 C6.5 12.5, 12 12, 16 16Z" />
-      </g>
-      <circle cx="16" cy="16" r="2.4" fill="currentColor" />
-    </svg>
-  );
+function Logo({ alt = "", className = "" }) {
+  return <img className={className} src={`${import.meta.env.BASE_URL}kraken-logo.png`} alt={alt} />;
 }
 
 function Header() {
   return (
     <header className="site-header">
       <div className="wrap">
-        <a className="brand" href="#top" aria-label="CoolPlay home"><Logo /> CoolPlay</a>
+        <a className="brand" href="#top" aria-label="Kraken home"><Logo /> <span>Kraken</span></a>
         <nav aria-label="Primary">
           <ul>
             <li><a href="#product">Product</a></li>
@@ -103,7 +93,7 @@ function AirflowStage() {
     <div className="stage" style={{ "--flow": s.flow, "--flow-o": s.op, "--spin": s.spin }}>
       <div className="stage-title">
         <strong>Try the controls</strong>
-        <span>Side view of a laptop on CoolPlay</span>
+        <span>Side view of a laptop on the Kraken pad</span>
       </div>
 
       <svg viewBox="0 0 640 420" role="img" aria-label="Side view of a laptop resting on a cooling pad. Dashed lines show air moving from the pad fans into the gap under the laptop.">
@@ -195,13 +185,13 @@ function Hero() {
     <section className="hero" aria-labelledby="hero-title">
       <div className="wrap hero-grid">
         <div>
-          <h1 id="hero-title">Stay Cool. Play Longer.</h1>
-          <p className="lead">A laptop cooling pad for gaming laptops, with adjustable fans, adjustable angles, and simple controls, at a price students can consider.</p>
+          <h1 id="hero-title">Beyond Reality. <span className="accent">Beyond Limits.</span></h1>
+          <p className="lead">The Kraken cooling pad for gaming laptops. Adjustable fans, adjustable angles, and simple controls, so you can stay cool and play longer.</p>
           <div className="hero-actions">
             <a className="btn btn-primary" href="#join">Join the pilot list</a>
             <a className="btn btn-ghost" href="#proof">See how we'll test it</a>
           </div>
-          <p className="hero-note">CoolPlay is at concept stage. Nothing here is for sale yet, and every performance claim waits for real test results.</p>
+          <p className="hero-note">The Kraken cooling pad is at concept stage. Nothing here is for sale yet, and every performance claim waits for real test results.</p>
         </div>
         <AirflowStage />
       </div>
@@ -212,6 +202,18 @@ function Hero() {
 /* ------------------------------------------------------------------ */
 /*  Sections                                                           */
 /* ------------------------------------------------------------------ */
+function Brand() {
+  return (
+    <section className="brand-band" aria-label="Kraken brand">
+      <div className="wrap">
+        <Logo className="brand-mascot" alt="Kraken mascot logo: a black squid wearing glowing cyan goggles" />
+        <p className="brand-word">Kraken</p>
+        <p className="brand-tag">Beyond reality. Beyond limits.</p>
+      </div>
+    </section>
+  );
+}
+
 function Problem() {
   return (
     <section aria-labelledby="problem-title">
@@ -219,7 +221,7 @@ function Problem() {
         <div>
           <h2 id="problem-title">Long sessions are hard on a gaming laptop, and on you.</h2>
           <div className="gap-note">
-            <p><strong>Cooling pads already exist.</strong> They vary a lot in airflow, noise, build quality, and ease of use. CoolPlay aims at one gap: reasonable cooling support, comfortable positioning, simple controls, and performance information you can trust, without paying for features you don't need.</p>
+            <p><strong>Cooling pads already exist.</strong> They vary a lot in airflow, noise, build quality, and ease of use. Kraken aims at one gap: reasonable cooling support, comfortable positioning, simple controls, and performance information you can trust, without paying for features you don't need.</p>
           </div>
         </div>
         <ul className="problem-list">
@@ -239,7 +241,7 @@ function Features() {
     <section className="features" id="product" aria-labelledby="product-title">
       <div className="wrap">
         <div className="section-head">
-          <h2 id="product-title">Five things CoolPlay is designed to do</h2>
+          <h2 id="product-title">Five things the Kraken pad is designed to do</h2>
           <p>The concept combines cooling, comfort, and control in one pad. Specifications are still being finalized through testing.</p>
         </div>
 
@@ -422,7 +424,7 @@ function Join() {
       <div className="wrap join-grid">
         <div>
           <h2 id="join-title">Help shape the pilot</h2>
-          <p className="muted measure" style={{ marginTop: "1rem" }}>Tell us about your laptop and what bothers you most. Early answers decide which problem CoolPlay solves first.</p>
+          <p className="muted measure" style={{ marginTop: "1rem" }}>Tell us about your laptop and what bothers you most. Early answers decide which problem Kraken solves first.</p>
         </div>
 
         <div className="join-card">
@@ -431,18 +433,18 @@ function Join() {
           <a className="btn btn-primary" href={FORM_LINK} target="_blank" rel="noopener noreferrer">
             Share your opinion
           </a>
-          <p className="form-note">We'll only use your answers to shape the CoolPlay pilot.</p>
+          <p className="form-note">We'll only use your answers to shape the Kraken pilot.</p>
         </div>
       </div>
     </section>
   );
-} 
+}
 
 function Footer() {
   return (
     <footer>
       <div className="wrap foot">
-        <a className="brand" href="#top" aria-label="Back to top"><Logo /> CoolPlay</a>
+        <a className="brand" href="#top" aria-label="Back to top"><Logo /> <span>Kraken</span></a>
         <p>Preliminary concept. Product specifications, pricing, market demand, and performance claims all require validation.</p>
       </div>
     </footer>
@@ -458,6 +460,7 @@ export default function App() {
       <Header />
       <main id="top">
         <Hero />
+        <Brand />
         <Problem />
         <Features />
         <Models />
