@@ -415,7 +415,6 @@ function Faq() {
 }
 
 function Join() {
-function Join() {
   const FORM_LINK = "https://docs.google.com/forms/d/e/1FAIpQLSfN9B6zl3QyFH93hIiqlHbVZoXbf8fE1zyH90Q-ozfUz3voBw/viewform";
 
   return (
