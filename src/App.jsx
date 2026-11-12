@@ -442,15 +442,16 @@ function Join() {
           <p className="muted measure" style={{ marginTop: "1rem" }}>Tell us about your laptop and what bothers you most. Early answers decide which problem CoolPlay solves first.</p>
         </div>
 
-        <div className="join-card" role="group" aria-label="Pilot list sign-up" onKeyDown={(e) => { if (e.key === "Enter" && e.target.tagName === "INPUT") submit(); }}>
-          <div className="field">
-            <label htmlFor="email">Email address</label>
-            <input
-              type="email" id="email" autoComplete="email" placeholder="you@example.com"
-              value={email} onChange={(e) => setEmail(e.target.value)}
-              aria-invalid={error ? "true" : undefined} aria-describedby="email-err"
-            />
-            <div className="err" id="email-err" role="alert">{error}</div>
+<iframe
+  title="CoolPlay pilot list sign-up"
+  src="https://docs.google.com/forms/d/e/1FAIpQLSfN9B6zl3QyFH93hIiqlHbVZoXbf8fE1zyH90Q-ozfUz3voBw/viewform?usp=publish-editor?embedded=true"
+  width="100%"
+  height="760"
+  frameBorder="0"
+  style={{ border: 0, borderRadius: 16, background: "#fff" }}
+>
+  Loading…
+</iframe>
           </div>
           <div className="field">
             <label htmlFor="size">Your laptop screen size</label>
