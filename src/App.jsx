@@ -449,30 +449,9 @@ function Join() {
   height="760"
   frameBorder="0"
   style={{ border: 0, borderRadius: 16, background: "#fff" }}
->
-  Loading…
-</iframe>
-          </div>
-          <div className="field">
-            <label htmlFor="size">Your laptop screen size</label>
-            <select id="size" value={size} onChange={(e) => setSize(e.target.value)}>
-              <option>13 to 14 inches</option>
-              <option>15 to 16 inches</option>
-              <option>17 inches or larger</option>
-              <option>Not sure</option>
-            </select>
-          </div>
-          <div className="field">
-            <label htmlFor="issue">What bothers you most?</label>
-            <select id="issue" value={issue} onChange={(e) => setIssue(e.target.value)}>
-              <option>Heat</option>
-              <option>Fan noise</option>
-              <option>Comfort and posture</option>
-              <option>Price of cooling pads</option>
-              <option>Something else</option>
-            </select>
-          </div>
-          <button className="btn btn-primary" type="button" onClick={submit}>Join the pilot list</button>
+       >
+          Loading…
+        </iframe>
       </div>
     </section>
   );
