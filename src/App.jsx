@@ -415,24 +415,8 @@ function Faq() {
 }
 
 function Join() {
-  const [email, setEmail] = useState("");
-  const [size, setSize] = useState("15 to 16 inches");
-  const [issue, setIssue] = useState("Heat");
-  const [error, setError] = useState("");
-  const [done, setDone] = useState(false);
-
-  // Front-end only: wire this to your backend or a form service to collect sign-ups.
-  const submit = () => {
-    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
-    if (!valid) {
-      setError("Enter a valid email address, like you@example.com.");
-      setDone(false);
-      return;
-    }
-    setError("");
-    setDone(true);
-    setEmail("");
-  };
+function Join() {
+  const FORM_LINK = "https://docs.google.com/forms/d/e/1FAIpQLSfN9B6zl3QyFH93hIiqlHbVZoXbf8fE1zyH90Q-ozfUz3voBw/viewform";
 
   return (
     <section id="join" aria-labelledby="join-title">
@@ -442,16 +426,14 @@ function Join() {
           <p className="muted measure" style={{ marginTop: "1rem" }}>Tell us about your laptop and what bothers you most. Early answers decide which problem CoolPlay solves first.</p>
         </div>
 
-<iframe
-  title="CoolPlay pilot list sign-up"
-  src="https://docs.google.com/forms/d/e/1FAIpQLSfN9B6zl3QyFH93hIiqlHbVZoXbf8fE1zyH90Q-ozfUz3voBw/viewform?usp=publish-editor?embedded=true"
-  width="100%"
-  height="760"
-  frameBorder="0"
-  style={{ border: 0, borderRadius: 16, background: "#fff" }}
-       >
-          Loading…
-        </iframe>
+        <div className="join-card">
+          <h3>Click here to share your opinion</h3>
+          <p className="muted">It takes about a minute. The form opens in a new tab, and you can ask to join the pilot list there.</p>
+          <a className="btn btn-primary" href={FORM_LINK} target="_blank" rel="noopener noreferrer">
+            Share your opinion
+          </a>
+          <p className="form-note">We'll only use your answers to shape the CoolPlay pilot.</p>
+        </div>
       </div>
     </section>
   );
