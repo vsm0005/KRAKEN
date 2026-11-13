@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./styles.css";
 
 
@@ -185,7 +185,12 @@ function Hero() {
     <section className="hero" aria-labelledby="hero-title">
       <div className="wrap hero-grid">
         <div>
-          <h1 id="hero-title">Beyond Reality. <span className="accent">Beyond Limits.</span></h1>
+          <h1 id="hero-title">
+            <span className="w" style={{ "--d": "0ms" }}>Beyond</span>{" "}
+            <span className="w" style={{ "--d": "90ms" }}>Reality.</span>{" "}
+            <span className="w accent" style={{ "--d": "260ms" }}>Beyond</span>{" "}
+            <span className="w accent" style={{ "--d": "350ms" }}>Limits.</span>
+          </h1>
           <p className="lead">The Kraken cooling pad for gaming laptops. Adjustable fans, adjustable angles, and simple controls, so you can stay cool and play longer.</p>
           <div className="hero-actions">
             <a className="btn btn-primary" href="#join">Join the pilot list</a>
@@ -202,11 +207,77 @@ function Hero() {
 /* ------------------------------------------------------------------ */
 /*  Sections                                                           */
 /* ------------------------------------------------------------------ */
+const TICKER = ["Beyond reality", "Beyond limits", "Adjustable fans", "Three fan speeds", "Adjustable angles", "Concept preview"];
+
+function Ticker() {
+  const items = [...TICKER, ...TICKER];
+  return (
+    <div className="ticker" aria-hidden="true">
+      <div className="ticker-track">
+        <div className="ticker-row">{items.map((t, i) => <span key={i}>{t}</span>)}</div>
+        <div className="ticker-row">{items.map((t, i) => <span key={i}>{t}</span>)}</div>
+      </div>
+    </div>
+  );
+}
+
+/* Scroll-reveal and scroll-progress motion. Skipped for people who prefer reduced motion. */
+const REVEAL = ".cp section h2, .section-head p, .gap-note, .problem-list li, .tile, .price-line, .price-sub, .table-scroll, .costs > *, .phases li, .claims, .box, .cp details, .join-card, .brand-stage, .brand-word, .brand-tag";
+
+function useMotion() {
+  useEffect(() => {
+    const els = Array.from(document.querySelectorAll(REVEAL));
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    els.forEach((el) => {
+      const group = Array.from(el.parentElement.children).filter((c) => c.matches(REVEAL));
+      el.style.setProperty("--d", `${Math.min(group.indexOf(el), 5) * 90}ms`);
+      el.classList.add("reveal");
+    });
+
+    if (reduce || !("IntersectionObserver" in window)) {
+      els.forEach((el) => el.classList.add("is-in"));
+      return () => els.forEach((el) => el.classList.remove("reveal", "is-in"));
+    }
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add("is-in");
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+    els.forEach((el) => io.observe(el));
+
+    const bar = document.querySelector(".scroll-bar");
+    let ticking = false;
+    const update = () => {
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      if (bar) bar.style.transform = `scaleX(${max > 0 ? Math.min(1, h.scrollTop / max) : 0})`;
+      ticking = false;
+    };
+    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    update();
+
+    return () => {
+      io.disconnect();
+      window.removeEventListener("scroll", onScroll);
+      els.forEach((el) => el.classList.remove("reveal", "is-in"));
+    };
+  }, []);
+}
+
 function Brand() {
   return (
     <section className="brand-band" aria-label="Kraken brand">
       <div className="wrap">
-        <Logo className="brand-mascot" alt="Kraken mascot logo: a black squid wearing glowing cyan goggles" />
+        <div className="brand-stage">
+          <span className="brand-glow" aria-hidden="true" />
+          <Logo className="brand-mascot" alt="Kraken mascot logo: a black squid wearing glowing cyan goggles" />
+        </div>
         <p className="brand-word">Kraken</p>
         <p className="brand-tag">Beyond reality. Beyond limits.</p>
       </div>
@@ -455,11 +526,14 @@ function Footer() {
 /*  App                                                                */
 /* ------------------------------------------------------------------ */
 export default function App() {
+  useMotion();
   return (
     <div className="cp">
+      <div className="scroll-bar" aria-hidden="true" />
       <Header />
       <main id="top">
         <Hero />
+        <Ticker />
         <Brand />
         <Problem />
         <Features />
